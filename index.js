@@ -11,8 +11,11 @@ const conn = require("./db/conn");
 // Models
 const Tought = require("./models/Tought");
 
-// routes
+// Import routes
 const toughtsRoutes = require("./routes/toughtsRoutes");
+const authRoutes = require('./routes/authRoutes')
+
+// Import Controller
 const ToughController = require("./controllers/ToughtController");
 
 app.engine("handlebars", exphbs());
@@ -64,6 +67,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/toughts", toughtsRoutes);
+app.use('/', authRoutes)
 
 app.get("/", ToughController.showToughts);
 
