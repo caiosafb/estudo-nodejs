@@ -9,6 +9,10 @@ const app = express()
 
 const conn = require('./db/conn')
 
+//Models - chamando model para ser criada tabela quando iniciar o projeto 
+    const Tought = require('./models/Tought')
+    const User = require('./models/User')
+
 //Configuração handlebars - template engine
     app.engine('handlebars', exphbs())
     app.set('view engine', 'handlebars')
@@ -61,6 +65,7 @@ const conn = require('./db/conn')
         next()
     })
 conn 
+    // .sync({force: true})
     .sync()
     .then(() => {
         app.listen(3000)
